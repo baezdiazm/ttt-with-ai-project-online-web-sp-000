@@ -4,7 +4,7 @@ require_relative '../config/environment'
 
 def intro
   puts "Welcome to Tic Tac Toe!"
-  puts "Enter the number of player(s) to start game (0, 1 or 2) or type (exit) to end game?"
+  puts "Enter the number of players to start game (0, 1 or 2), type "exit" to end game:"
   answer = gets.strip
   if answer.downcase == "exit"
     return
