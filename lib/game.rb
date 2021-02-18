@@ -39,6 +39,7 @@ class Game
     end
   end
 
+<<<<<<< HEAD
     def turn
       player = current_player
       current_move = player.move(@board)
@@ -62,6 +63,43 @@ class Game
       puts "Congratulations #{winner}!"
     elsif draw?
       puts "Cat's Game!"
+=======
+  def won?
+    WIN_COMBINATIONS.detect do |combo|
+      @board.cells[combo[0]] == @board.cells[combo[1]] && @board.cells[combo[1]] == @board.cells[combo[2]] && @board.taken?(combo[0]+1)
+    end
+  end
+
+  def draw?
+    true if !won? && @board.full?
+  end
+
+  def over?
+    true if won? || @board.full? || draw?
+  end
+
+  def winner
+    WIN_COMBINATIONS.detect do |combo|
+      if @board.cells[combo[0]] == "X" && @board.cells[combo[1]] == "X" && @board.cells[combo[2]] == "X"
+        return "X"
+      elsif
+        @board.cells[combo[0]] == "O" && @board.cells[combo[1]] == "O" && @board.cells[combo[2]] == "O"
+          return "O"
+      end
+    end
+  end
+
+  def turn
+    puts "Please enter 1-9:"
+    input = @player_1.move(@board)
+    index = @board.to_index(input)
+    player = current_player
+    if @board.valid_move?(index)
+      @board.update(index, player)
+      @board.display_board
+    else
+      turn
+>>>>>>> 3accbc88d889eda246ccd04d856e94743effd032
     end
   end
 
